@@ -6,11 +6,11 @@ using namespace std;
 int currPlayer;
 char currSymbol;
 
-char board[5][5] = {{'1', '|', '2', '|', '3'},
-                    {'-', '-', '-', '-', '-'},
-                    {'4', '|', '5', '|', '6'},
-                    {'-', '-', '-', '-', '-'},
-                    {'7', '|', '8', '|', '9'}};
+char board[5][5] = {{' ', '|', ' ', '|', ' '},
+                    {'-', '+', '-', '+', '-'},
+                    {' ', '|', ' ', '|', ' '},
+                    {'-', '+', '-', '+', '-'},
+                    {' ', '|', ' ', '|', ' '}};
 
 void drawBoard()
 {
@@ -154,7 +154,7 @@ void game()
             currSymbol = symbol_p1;
             cout << "Player " << currPlayer << " choose your slot\n";
             cin >> slot;
-            if (checkSymbol(slot) == 'X' || checkSymbol(slot) == 'O' || checkSymbol(slot) == 'x' || checkSymbol(slot) == 'o')
+            if (checkSymbol(slot) != ' ')
             {
                 cout << "Slot already taken\n";
                 i--;
@@ -168,7 +168,7 @@ void game()
             currSymbol = symbol_p2;
             cout << "Player " << currPlayer << " choose your slot\n";
             cin >> slot;
-            if (checkSymbol(slot) == 'X' || checkSymbol(slot) == 'O' || checkSymbol(slot) == 'x' || checkSymbol(slot) == 'o')
+            if (checkSymbol(slot) != ' ')
             {
                 cout << "Slot already taken\n";
                 i--;
@@ -209,7 +209,7 @@ void gameVsCpu()
             currSymbol = symbol_p1;
             cout << "Player " << currPlayer << " choose your slot\n";
             cin >> slot;
-            if (checkSymbol(slot) == 'X' || checkSymbol(slot) == 'O' || checkSymbol(slot) == 'x' || checkSymbol(slot) == 'o')
+            if (checkSymbol(slot) != ' ')
             {
                 cout << "Slot already taken\n";
                 i--;
@@ -222,7 +222,7 @@ void gameVsCpu()
             currPlayer = 2;
             currSymbol = symbol_p2;
             slot = 1 + rand() % 9;
-            if (checkSymbol(slot) == 'X' || checkSymbol(slot) == 'O')
+            if (checkSymbol(slot) != ' ')
             {
                 i--;
                 continue;
