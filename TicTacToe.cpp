@@ -28,31 +28,31 @@ void addSymbol(int slot)
 {
     switch (slot)
     {
-    case 1:
+    case '1':
         board[0][0] = currSymbol;
         break;
-    case 2:
+    case '2':
         board[0][2] = currSymbol;
         break;
-    case 3:
+    case '3':
         board[0][4] = currSymbol;
         break;
-    case 4:
+    case '4':
         board[2][0] = currSymbol;
         break;
-    case 5:
+    case '5':
         board[2][2] = currSymbol;
         break;
-    case 6:
+    case '6':
         board[2][4] = currSymbol;
         break;
-    case 7:
+    case '7':
         board[4][0] = currSymbol;
         break;
-    case 8:
+    case '8':
         board[4][2] = currSymbol;
         break;
-    case 9:
+    case '9':
         board[4][4] = currSymbol;
         break;
     default:
@@ -101,27 +101,33 @@ int checkWinner()
 {
     for (int i = 0; i < 3; i++)
     {
+     if(board[2*i][0]!= ' ') {   
         if ((board[2*i][0] == board[2*i][2]) && (board[2*i][0] == board[2*i][4]))
         {
             cout << "Player " << currPlayer << " wins! Yay!\n";
             return currPlayer;
         }
+     }
     }
 
     for (int i = 0; i < 3; i++)
     {
+    if(board[0][2*i]!=' ') {
         if ((board[0][2 * i] == board[2][2 * i]) && (board[0][2 * i] == board[4][2 * i]))
         {
             cout << "Player " << currPlayer << " wins! Yay!\n";
             return currPlayer;
         }
     }
+    }
 
+   if(board[0][0]!=' ') {
     if ((board[0][0] == board[2][2]) && (board[0][0] == board[4][4]))
     {
         cout << "Player " << currPlayer << " wins! Yay!\n";
         return currPlayer;
     }
+   }
 
     if ((board[0][4] == board[2][2]) && (board[0][4] == board[4][0]))
     {
@@ -141,7 +147,7 @@ void game()
     if(symbol_p1=='X') symbol_p2 = 'O';
     else symbol_p2 = 'X';
     
-    int slot;
+    char slot;
 
     drawBoard();
     int winner;
@@ -196,7 +202,7 @@ void gameVsCpu()
     else
         symbol_p2 = 'X';
 
-    int slot;
+    char slot;
 
     drawBoard();
     int winner;
@@ -221,7 +227,7 @@ void gameVsCpu()
         {
             currPlayer = 2;
             currSymbol = symbol_p2;
-            slot = 1 + rand() % 9;
+            slot = 49 + rand() % 9;
             if (checkSymbol(slot) != ' ')
             {
                 i--;
